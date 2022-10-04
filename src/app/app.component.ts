@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'YouTube App';
+  searchValue = '';
+
+  onSearch(val: string) {
+    this.searchValue = val;
+  }
 }
