@@ -31,7 +31,7 @@ header {
     padding: 0;
   }
 
-  .filter {
+  .sort {
     width: 100%;
     margin-top: 10px;
     font-size: 14px;
@@ -47,6 +47,14 @@ header {
         margin-left: 12px;
         color: #2F80ED;
         cursor: pointer;
+
+        &:last-of-type {
+          cursor: default;
+        }
+
+        &.selected {
+          text-decoration: underline;
+        }
       }
 
       .filter-input {

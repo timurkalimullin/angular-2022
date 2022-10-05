@@ -12,12 +12,16 @@
         Name
       </div>
 
-      <div *ngIf="showFilter" class="filter">
-        <ul class="filter-options">
+      <div *ngIf="showSort" class="sort">
+        <ul class="sort-options">
           <span>Sort by: </span>
-          <li>date</li>
-          <li>count of views</li>
-          <li>word sentence</li>
+          <li
+            *ngFor="let option of options"
+            (click)="changeOption(option.value)"
+            [ngClass]="{ selected: option.value === selectedOption}">
+              {{option.label}}
+          </li>
+          <li>by word sentence</li>
           <input class="filter-input" matInput type="text" [(ngModel)]="filterValue">
         </ul>
       </div>

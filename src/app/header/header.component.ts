@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 
+interface Option {
+  label: string;
+  value: string;
+}
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -10,9 +15,20 @@ export class HeaderComponent {
 
   filterValue: string = '';
 
-  showFilter = true;
+  showSort = false;
+
+  options: Option[] = [
+    { label: 'date', value: 'date' },
+    { label: 'count of views', value: 'count' },
+  ];
+
+  selectedOption?: string = 'date';
 
   toggleFilter() {
-    this.showFilter = !this.showFilter;
+    this.showSort = !this.showSort;
+  }
+
+  changeOption(opt: string) {
+    this.selectedOption = opt;
   }
 }
