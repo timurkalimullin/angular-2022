@@ -1,9 +1,25 @@
 <header>
-  <mat-form-field class="example-form-field" appearance="fill">
-    <input matInput type="text" [(ngModel)]="value" (input)="onChange($any($event.target).value)" />
-    <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-      <mat-icon>close</mat-icon>
-    </button>
-  </mat-form-field>
+  <mat-toolbar class="toolbar">
+      <h1 class="logo"><img src="../../assets/logo.svg" alt="logo" /></h1>
+      <div class="searchbar">
+        <input class="search-input" matInput type="text" [(ngModel)]="searchValue">
+        <button class="button" mat-raised-button color="primary">Submit</button>
+        <button (click)="toggleFilter()" class="button filter-button square" mat-raised-button color="primary">
+          <img src="../../assets/settings.svg" />
+        </button>
+      </div>
+      <div class="userinfo">
+        Name
+      </div>
 
+      <div *ngIf="showFilter" class="filter">
+        <ul class="filter-options">
+          <span>Sort by: </span>
+          <li>date</li>
+          <li>count of views</li>
+          <li>word sentence</li>
+          <input class="filter-input" matInput type="text" [(ngModel)]="filterValue">
+        </ul>
+      </div>
+  </mat-toolbar>
 </header>

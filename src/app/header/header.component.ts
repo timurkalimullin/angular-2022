@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,11 +6,13 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  value: string = '';
+  searchValue: string = '';
 
-  @Output() search = new EventEmitter<string>();
+  filterValue: string = '';
 
-  onChange(val: string) {
-    this.search.emit(val);
+  showFilter = true;
+
+  toggleFilter() {
+    this.showFilter = !this.showFilter;
   }
 }

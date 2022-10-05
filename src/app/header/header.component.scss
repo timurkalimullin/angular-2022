@@ -1,0 +1,58 @@
+header {
+
+  .logo {
+    margin-right: 10px;
+    height: 52px;
+  }
+
+  .toolbar {
+    height: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .searchbar {
+    width: 600px;
+  }
+
+  .search-input {
+    width: 70%;
+    height: 24px;
+  }
+
+  .button {
+    margin-left: 10px;
+  }
+
+  .square {
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    padding: 0;
+  }
+
+  .filter {
+    width: 100%;
+    margin-top: 10px;
+    font-size: 14px;
+    color: #929292;
+
+    &-options {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      list-style-type: none;
+
+      li {
+        margin-left: 12px;
+        color: #2F80ED;
+        cursor: pointer;
+      }
+
+      .filter-input {
+        height: 14px;
+        margin-left: 8px;
+      }
+    }
+  }
+}
