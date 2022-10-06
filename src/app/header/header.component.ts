@@ -1,8 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 
 interface Option {
   label: string;
-  value: string;
+  value: 'date' | 'count';
+}
+
+interface QueryValue {
+  filterValue: string;
+  selectedOption: Option['value'];
+  sortOrder: 'asc' | 'desc';
 }
 
 @Component({
@@ -11,27 +17,53 @@ interface Option {
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  searchValue: string = '';
+  @Output() query = new EventEmitter<QueryValue>();
 
-  filterValue: string = '';
+  @Output() search = new EventEmitter<string>();
 
-  showSort = false;
+  showSort: boolean = false;
 
   options: Option[] = [
     { label: 'date', value: 'date' },
     { label: 'count of views', value: 'count' },
   ];
 
-  selectedOption?: string = 'date';
+  searchValue: string = '';
 
-  sortOrder: 'asc' | 'desc' = 'asc';
+  filterValue: string = '';
+
+  selectedOption: Option['value'] = 'date';
+
+  sortOrder: QueryValue['sortOrder'] = 'asc';
 
   toggleFilter() {
     this.showSort = !this.showSort;
   }
 
-  changeOption(opt: string) {
+  getQuery() {
+    return {
+      selectedOption: this.selectedOption,
+      sortOrder: this.sortOrder,
+      filterValue: this.filterValue,
+    };
+  }
+
+  changeOption(opt: Option['value']) {
     this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
     this.selectedOption = opt;
+
+    this.query.emit(this.getQuery());
+  }
+
+  filterValueChange(e: any) {
+    this.filterValue = e.target.value;
+
+    this.query.emit(this.getQuery());
+  }
+
+  searchValueChange(e: any) {
+    this.searchValue = e.target.value;
+
+    this.search.emit(this.searchValue);
   }
 }

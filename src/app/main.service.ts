@@ -10,7 +10,7 @@ export class MainService {
 
   getData(): SearchResponse {
     this.data = data;
-    console.log({ data });
+
     return this.data;
   }
 }

@@ -2,7 +2,7 @@
   <mat-toolbar class="toolbar">
       <h1 class="logo"><img src="../../assets/logo.svg" alt="logo" /></h1>
       <div class="searchbar">
-        <input class="search-input" matInput type="text" [(ngModel)]="searchValue">
+        <input class="search-input" matInput type="text" (input)="searchValueChange($event)">
         <button class="button" mat-raised-button color="primary">Submit</button>
         <button (click)="toggleFilter()" class="button filter-button square" mat-raised-button color="primary">
           <img src="../../assets/settings.svg" />
@@ -23,7 +23,7 @@
           </li>
         </ul>
         <span>Filter by word sentence: </span>
-        <input class="filter-input" matInput type="text" [(ngModel)]="filterValue">
+        <input class="filter-input" matInput type="text" (input)="filterValueChange($event)">
       </div>
   </mat-toolbar>
 </header>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MainService } from './main.service';
 import { SearchResponse } from './search/search-response.model';
 
@@ -7,12 +7,16 @@ import { SearchResponse } from './search/search-response.model';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
-  data?: SearchResponse;
+export class AppComponent {
+  items?: SearchResponse['items'];
 
   constructor(private mainService: MainService) {}
 
-  ngOnInit() {
-    this.data = this.mainService.getData();
+  onSearch(v: string) {
+    const items = this.mainService
+      .getData()
+      .items.filter(el => el.snippet.title.includes(v));
+    console.log('items', items);
+    this.items = items;
   }
 }
