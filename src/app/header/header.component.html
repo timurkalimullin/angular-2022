@@ -1,29 +1,31 @@
 <header>
-  <mat-toolbar class="toolbar">
+  <div class="toolbar container">
+    <div class="toolbar-block logo-block">
       <h1 class="logo"><img src="../../assets/logo.svg" alt="logo" /></h1>
-      <div class="searchbar">
-        <input class="search-input" matInput type="text" [(ngModel)]="searchValue">
-        <button class="button" mat-raised-button color="primary" (click)="submit()">Submit</button>
-        <button (click)="toggleFilter()" class="button filter-button square" mat-raised-button color="primary">
-          <img src="../../assets/settings.svg" />
-        </button>
-      </div>
-      <div class="userinfo">
-        Name
-      </div>
+      <input class="search-input" matInput type="text" [(ngModel)]="searchValue">
+    </div>
+    <div class="toolbar-block button-block">
+      <button class="button" mat-raised-button color="primary" (click)="submit()">Submit</button>
+      <button (click)="toggleFilter()" class="button filter-button square" mat-raised-button color="primary">
+        <img src="../../assets/settings.svg" />
+      </button>
+    </div>
+    <div class="toolbar-block userinfo-block">
+      Name
+    </div>
 
-      <div *ngIf="showSort" class="sort">
-        <span>Sort by: </span>
-        <ul class="sort-options" [ngClass]="queryValue.sortOrder === 'asc' ? 'asc' : 'desc'">
-          <li
-            *ngFor="let option of options"
-            (click)="sortChange(option.value)"
-            [ngClass]="{ selected: option.value === queryValue.selectedOption}">
-              {{option.label}}
-          </li>
-        </ul>
-        <span>Filter by word sentence: </span>
-        <input class="filter-input" matInput type="text" (input)="filterValueChange($event)">
-      </div>
-  </mat-toolbar>
+    <div *ngIf="showSort" class="sort">
+      <span>Sort by: </span>
+      <ul class="sort-options" [ngClass]="queryValue.sortOrder === 'asc' ? 'asc' : 'desc'">
+        <li
+          *ngFor="let option of options"
+          (click)="sortChange(option.value)"
+          [ngClass]="{ selected: option.value === queryValue.selectedOption}">
+            {{option.label}}
+        </li>
+      </ul>
+      <span>Filter by word sentence: </span>
+      <input class="filter-input" matInput type="text" (input)="filterValueChange($event)">
+    </div>
+  </div>
 </header>

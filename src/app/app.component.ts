@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MainService } from './main.service';
+import { MainService } from './common/services/main.service';
 import { SearchResponse } from './common/models/search-response.model';
 import { QueryValue } from './common/models';
 
