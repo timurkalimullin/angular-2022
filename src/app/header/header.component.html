@@ -13,17 +13,17 @@
       </div>
 
       <div *ngIf="showSort" class="sort">
-        <ul class="sort-options">
-          <span>Sort by: </span>
+        <span>Sort by: </span>
+        <ul class="sort-options" [ngClass]="sortOrder === 'asc' ? 'asc' : 'desc'">
           <li
             *ngFor="let option of options"
             (click)="changeOption(option.value)"
             [ngClass]="{ selected: option.value === selectedOption}">
               {{option.label}}
           </li>
-          <li>by word sentence</li>
-          <input class="filter-input" matInput type="text" [(ngModel)]="filterValue">
         </ul>
+        <span>Filter by word sentence: </span>
+        <input class="filter-input" matInput type="text" [(ngModel)]="filterValue">
       </div>
   </mat-toolbar>
 </header>

@@ -24,11 +24,14 @@ export class HeaderComponent {
 
   selectedOption?: string = 'date';
 
+  sortOrder: 'asc' | 'desc' = 'asc';
+
   toggleFilter() {
     this.showSort = !this.showSort;
   }
 
   changeOption(opt: string) {
+    this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
     this.selectedOption = opt;
   }
 }

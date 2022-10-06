@@ -32,35 +32,55 @@ header {
   }
 
   .sort {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     margin-top: 10px;
     font-size: 14px;
-    color: #929292;
+
+    > span  {
+      margin-left: 12px;
+      color: #929292;
+    }
 
     &-options {
       display: flex;
       justify-content: center;
       align-items: center;
       list-style-type: none;
+      padding: 0;
+      user-select: none;
+
+      &.desc li.selected::after {
+        transform: rotate(180deg);
+      }
 
       li {
         margin-left: 12px;
         color: #2F80ED;
         cursor: pointer;
 
-        &:last-of-type {
-          cursor: default;
-        }
-
         &.selected {
           text-decoration: underline;
+
+          &::after {
+            content: "";
+            display: inline-block;
+            width: 0;
+            height: 0;
+            margin: 0 auto;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-bottom: 10px solid #2F80ED;
+          }
         }
       }
+    }
 
-      .filter-input {
-        height: 14px;
-        margin-left: 8px;
-      }
+    .filter-input {
+      height: 14px;
+      margin-left: 8px;
     }
   }
 }
