@@ -7,5 +7,5 @@ import { SearchResponse } from './search-response.model';
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent {
-  @Input() items: SearchResponse['items'] = [];
+  @Input() items?: SearchResponse['items'] = [];
 }

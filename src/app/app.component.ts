@@ -13,10 +13,8 @@ export class AppComponent {
   constructor(private mainService: MainService) {}
 
   onSearch(v: string) {
-    const items = this.mainService
-      .getData()
-      .items.filter(el => el.snippet.title.includes(v));
-    console.log('items', items);
+    const items = this.mainService.getItems(v);
+
     this.items = items;
   }
 }

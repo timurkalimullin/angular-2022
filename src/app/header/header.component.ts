@@ -61,9 +61,7 @@ export class HeaderComponent {
     this.query.emit(this.getQuery());
   }
 
-  searchValueChange(e: any) {
-    this.searchValue = e.target.value;
-
+  submit() {
     this.search.emit(this.searchValue);
   }
 }
