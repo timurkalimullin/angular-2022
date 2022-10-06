@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { SearchResponse } from './search/search-response.model';
+import { SearchResponse } from './common/models/search-response.model';
 import { data } from '../assets/data';
 
 @Injectable({

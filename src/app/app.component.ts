@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MainService } from './main.service';
-import { SearchResponse } from './search/search-response.model';
+import { SearchResponse } from './common/models/search-response.model';
+import { QueryValue } from './common/models';
 
 @Component({
   selector: 'app-root',
@@ -10,11 +11,17 @@ import { SearchResponse } from './search/search-response.model';
 export class AppComponent {
   items?: SearchResponse['items'];
 
+  query?: QueryValue;
+
   constructor(private mainService: MainService) {}
 
-  onSearch(v: string) {
+  search(v: string) {
     const items = this.mainService.getItems(v);
 
     this.items = items;
+  }
+
+  queryChange(query: QueryValue) {
+    this.query = query;
   }
 }

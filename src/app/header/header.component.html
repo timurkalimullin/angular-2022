@@ -14,11 +14,11 @@
 
       <div *ngIf="showSort" class="sort">
         <span>Sort by: </span>
-        <ul class="sort-options" [ngClass]="sortOrder === 'asc' ? 'asc' : 'desc'">
+        <ul class="sort-options" [ngClass]="queryValue.sortOrder === 'asc' ? 'asc' : 'desc'">
           <li
             *ngFor="let option of options"
-            (click)="changeOption(option.value)"
-            [ngClass]="{ selected: option.value === selectedOption}">
+            (click)="sortChange(option.value)"
+            [ngClass]="{ selected: option.value === queryValue.selectedOption}">
               {{option.label}}
           </li>
         </ul>

@@ -1,15 +1,5 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-
-interface Option {
-  label: string;
-  value: 'date' | 'count';
-}
-
-interface QueryValue {
-  filterValue: string;
-  selectedOption: Option['value'];
-  sortOrder: 'asc' | 'desc';
-}
+import { Option, QueryValue } from '../common/models';
 
 @Component({
   selector: 'app-header',
@@ -30,35 +20,27 @@ export class HeaderComponent {
 
   searchValue: string = '';
 
-  filterValue: string = '';
-
-  selectedOption: Option['value'] = 'date';
-
-  sortOrder: QueryValue['sortOrder'] = 'asc';
+  queryValue: QueryValue = {
+    filterValue: '',
+    selectedOption: 'date',
+    sortOrder: 'asc',
+  };
 
   toggleFilter() {
     this.showSort = !this.showSort;
   }
 
-  getQuery() {
-    return {
-      selectedOption: this.selectedOption,
-      sortOrder: this.sortOrder,
-      filterValue: this.filterValue,
-    };
+  sortChange(opt: Option['value']) {
+    this.queryValue.sortOrder =
+      this.queryValue.sortOrder === 'asc' ? 'desc' : 'asc';
+    this.queryValue.selectedOption = opt;
+
+    this.query.emit(this.queryValue);
   }
 
-  changeOption(opt: Option['value']) {
-    this.sortOrder = this.sortOrder === 'asc' ? 'desc' : 'asc';
-    this.selectedOption = opt;
-
-    this.query.emit(this.getQuery());
-  }
-
-  filterValueChange(e: any) {
-    this.filterValue = e.target.value;
-
-    this.query.emit(this.getQuery());
+  filterValueChange(e: Event) {
+    this.queryValue.filterValue = (e.target as HTMLInputElement).value;
+    this.query.emit(this.queryValue);
   }
 
   submit() {
