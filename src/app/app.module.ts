@@ -12,6 +12,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { SearchComponent } from './search/search.component';
 import { StatblockComponent } from './search/statblock/statblock.component';
+import { CardComponent } from './search/card/card.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { StatblockComponent } from './search/statblock/statblock.component';
     HeaderComponent,
     SearchComponent,
     StatblockComponent,
+    CardComponent,
   ],
   imports: [
     BrowserModule,
