@@ -1,16 +1,27 @@
 @import '../../styles.scss';
 
 .search-result {
+  padding: $md2 0;
+  .container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
   .card {
     width: 280px;
     height: 440px;
+    margin: $md;
     box-sizing: border-box;
     border-bottom: $md1 solid transparent;
     background-color: $cardbackground;
 
+    &-title {
+      height: 92px;
+    }
+
     &-description > p {
       display: -webkit-box;
-      -webkit-line-clamp: 4;
+      -webkit-line-clamp: 3;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
@@ -22,6 +33,12 @@
         width: 100%;
         height: 100%;
       }
+    }
+
+    &-stats {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: $md1;
     }
 
     .mat-card-actions {

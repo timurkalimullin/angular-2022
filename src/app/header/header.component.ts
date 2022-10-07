@@ -18,7 +18,7 @@ export class HeaderComponent {
     { label: 'count of views', value: 'count' },
   ];
 
-  searchValue: string = 'tut';
+  searchValue: string = '';
 
   queryValue: QueryValue = {
     filterValue: '',
