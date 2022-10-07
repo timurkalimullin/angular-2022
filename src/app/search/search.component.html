@@ -1,7 +1,26 @@
-<section class=""search-result>
+<section class="search-result">
   <div class="container">
     <div *ngFor="let item of items">
-      {{item.snippet.title}}
+      <mat-card class="card">
+        <mat-card-header class="card-title">
+          <mat-card-title>{{item.snippet.title}}</mat-card-title>
+        </mat-card-header>
+        <div class="card-image">
+          <img src="{{item.snippet.thumbnails.medium.url}}" alt="card-img">
+        </div>
+        <div class="card-stats">
+
+        </div>
+        <mat-card-content class="card-description">
+          <p>
+            {{item.snippet.description}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="primary">More...</button>
+        </mat-card-actions>
+      </mat-card>
+
     </div>
   </div>
 </section>

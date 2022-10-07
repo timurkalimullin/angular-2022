@@ -18,6 +18,7 @@
 $primary: #2F80ED;
 $secondary: aliceblue;
 $neutralcolor: #929292;
+$cardbackground: #e5e5e5;
 $md: 8px;
 $md1: 12px;
 $md2: 14px;
@@ -55,6 +56,6 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .container {
-  max-width: 1140px;
+  max-width: 1240px;
   margin: 0 auto;
 }
