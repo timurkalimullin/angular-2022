@@ -13,6 +13,7 @@ import { HeaderComponent } from './header/header.component';
 import { SearchComponent } from './search/search.component';
 import { StatblockComponent } from './search/statblock/statblock.component';
 import { CardComponent } from './search/card/card.component';
+import { ColorBorderDirective } from './common/directives/color-border.directive';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { CardComponent } from './search/card/card.component';
     SearchComponent,
     StatblockComponent,
     CardComponent,
+    ColorBorderDirective,
   ],
   imports: [
     BrowserModule,
