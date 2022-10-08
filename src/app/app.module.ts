@@ -14,6 +14,8 @@ import { SearchComponent } from './search/search.component';
 import { StatblockComponent } from './search/statblock/statblock.component';
 import { CardComponent } from './search/card/card.component';
 import { ColorBorderDirective } from './common/directives/color-border.directive';
+import { FilterPipe } from './common/pipes/filter/filter.pipe';
+import { SortPipe } from './common/pipes/sort/sort.pipe';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { ColorBorderDirective } from './common/directives/color-border.directive
     StatblockComponent,
     CardComponent,
     ColorBorderDirective,
+    FilterPipe,
+    SortPipe,
   ],
   imports: [
     BrowserModule,

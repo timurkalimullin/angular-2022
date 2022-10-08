@@ -25,7 +25,7 @@
         </li>
       </ul>
       <span>Filter by word sentence: </span>
-      <input class="filter-input" matInput type="text" (input)="filterValueChange($event)">
+      <input class="filter-input" matInput type="text" [value]="queryValue.filterValue" (input)="filterValueChange($event)">
     </div>
   </div>
 </header>

@@ -13,7 +13,7 @@ export class HeaderComponent {
 
   showSort: boolean = false;
 
-  options: Option[] = [
+  readonly options: Option[] = [
     { label: 'date', value: 'date' },
     { label: 'count of views', value: 'count' },
   ];
@@ -22,8 +22,6 @@ export class HeaderComponent {
 
   queryValue: QueryValue = {
     filterValue: '',
-    selectedOption: 'date',
-    sortOrder: 'asc',
   };
 
   toggleFilter() {
@@ -44,6 +42,13 @@ export class HeaderComponent {
   }
 
   submit() {
+    this.resetQueryValue();
     this.search.emit(this.searchValue);
+  }
+
+  resetQueryValue() {
+    const resetedValue = { filterValue: '' };
+    this.queryValue = resetedValue;
+    this.query.emit(resetedValue);
   }
 }
