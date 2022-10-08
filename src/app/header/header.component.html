@@ -1,31 +1,37 @@
 <header>
-  <div class="toolbar container">
-    <div class="toolbar-block logo-block">
-      <h1 class="logo"><img src="../../assets/logo.svg" alt="logo" /></h1>
-      <input class="search-input" matInput type="text" [(ngModel)]="searchValue">
-    </div>
-    <div class="toolbar-block button-block">
-      <button class="button" mat-raised-button color="primary" (click)="submit()">Submit</button>
-      <button (click)="toggleFilter()" class="button filter-button square" mat-raised-button color="primary">
-        <img src="../../assets/settings.svg" />
-      </button>
-    </div>
-    <div class="toolbar-block userinfo-block">
-      Name
-    </div>
+  <form (submit)="submit()">
+    <div class="toolbar container">
+      <div class="toolbar-block logo-block">
+        <h1 class="logo"><img src="../../assets/logo.svg" alt="logo" /></h1>
+        <input class="search-input" matInput type="text" [(ngModel)]="searchValue" name="search">
+      </div>
+      <div class="toolbar-block button-block">
+        <button type="submit" class="button" mat-raised-button color="primary" (click)="submit()">Submit</button>
+        <button type="button" (click)="toggleFilter()" class="button filter-button square" mat-raised-button color="primary">
+          <img src="../../assets/settings.svg" />
+        </button>
+      </div>
+      <div class="toolbar-block userinfo-block">
+        <span>Ivanov I.</span>
+        <img src="../../assets/login.svg" />
+      </div>
 
-    <div *ngIf="showSort" class="sort">
-      <span>Sort by: </span>
-      <ul class="sort-options" [ngClass]="queryValue.sortOrder === 'asc' ? 'asc' : 'desc'">
-        <li
-          *ngFor="let option of options"
-          (click)="sortChange(option.value)"
-          [ngClass]="{ selected: option.value === queryValue.selectedOption}">
-            {{option.label}}
-        </li>
-      </ul>
-      <span>Filter by word sentence: </span>
-      <input class="filter-input" matInput type="text" [value]="queryValue.filterValue" (input)="filterValueChange($event)">
+      <div *ngIf="showSort" class="sort">
+        <span>Sort by: </span>
+        <ul class="sort-options" [ngClass]="queryValue.sortOrder === 'asc' ? 'asc' : 'desc'">
+          <li
+            tabindex="0"
+            role="button"
+            *ngFor="let option of options"
+            (click)="sortChange(option.value)"
+            (keypress)="$event.key === 'Enter' && sortChange(option.value)"
+            [ngClass]="{ selected: option.value === queryValue.selectedOption}">
+              {{option.label}}
+          </li>
+        </ul>
+        <span>Filter by word sentence: </span>
+        <input class="filter-input" matInput type="text" [value]="queryValue.filterValue" (input)="filterValueChange($event)">
+      </div>
     </div>
-  </div>
+  </form>
 </header>

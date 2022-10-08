@@ -4,7 +4,7 @@ export interface Option {
 }
 
 export interface QueryValue {
-  filterValue: string;
+  filterValue?: string;
   selectedOption?: Option['value'];
   sortOrder?: 'asc' | 'desc';
 }

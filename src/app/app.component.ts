@@ -11,7 +11,9 @@ import { QueryValue } from './common/models';
 export class AppComponent {
   items?: SearchResponse['items'];
 
-  query?: QueryValue;
+  query: QueryValue = {
+    filterValue: '',
+  };
 
   constructor(private mainService: MainService) {}
 
@@ -22,6 +24,6 @@ export class AppComponent {
   }
 
   queryChange(query: QueryValue) {
-    this.query = query;
+    this.query = { ...this.query, ...query };
   }
 }

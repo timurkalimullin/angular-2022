@@ -26,7 +26,11 @@ header {
       }
 
       &.userinfo-block {
-        padding: $md;
+        padding: $md $md2;
+
+        > span {
+          margin-right: $md;
+        }
       }
     }
 

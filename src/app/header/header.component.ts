@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { Option, QueryValue } from '../common/models';
 
 @Component({
@@ -11,6 +11,8 @@ export class HeaderComponent {
 
   @Output() search = new EventEmitter<string>();
 
+  @Input() queryValue!: QueryValue;
+
   showSort: boolean = false;
 
   readonly options: Option[] = [
@@ -20,25 +22,20 @@ export class HeaderComponent {
 
   searchValue: string = '';
 
-  queryValue: QueryValue = {
-    filterValue: '',
-  };
-
   toggleFilter() {
     this.showSort = !this.showSort;
   }
 
   sortChange(opt: Option['value']) {
-    this.queryValue.sortOrder =
-      this.queryValue.sortOrder === 'asc' ? 'desc' : 'asc';
-    this.queryValue.selectedOption = opt;
+    const sortOrder = this.queryValue.sortOrder === 'asc' ? 'desc' : 'asc';
+    const selectedOption = opt;
 
-    this.query.emit(this.queryValue);
+    this.query.emit({ selectedOption, sortOrder });
   }
 
   filterValueChange(e: Event) {
-    this.queryValue.filterValue = (e.target as HTMLInputElement).value;
-    this.query.emit(this.queryValue);
+    const filterValue = (e.target as HTMLInputElement).value;
+    this.query.emit({ filterValue });
   }
 
   submit() {
@@ -47,8 +44,10 @@ export class HeaderComponent {
   }
 
   resetQueryValue() {
-    const resetedValue = { filterValue: '' };
-    this.queryValue = resetedValue;
-    this.query.emit(resetedValue);
+    this.query.emit({
+      filterValue: '',
+      sortOrder: undefined,
+      selectedOption: undefined,
+    });
   }
 }
