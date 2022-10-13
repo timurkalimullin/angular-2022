@@ -4,6 +4,7 @@ import { SearchComponent } from './pages/search/search.component';
 import { CardComponent } from './components/card/card.component';
 import { StatblockComponent } from './components/statblock/statblock.component';
 import { ColorBorderDirective } from './directives/color-border.directive';
+import { NotfoundComponent } from './pages/notfound/notfound.component';
 
 @NgModule({
   declarations: [
@@ -11,6 +12,7 @@ import { ColorBorderDirective } from './directives/color-border.directive';
     ColorBorderDirective,
     CardComponent,
     StatblockComponent,
+    NotfoundComponent,
   ],
   imports: [CoreModule],
   exports: [SearchComponent],
