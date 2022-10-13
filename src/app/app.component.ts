@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { MainService } from './common/services/main.service';
-import { SearchResponse } from './common/models/search-response.model';
-import { QueryValue } from './common/models';
+import { MainService } from './core/services/main.service';
+import { SearchResponse } from './youtube/models/search-response.model';
+import { QueryValue } from './core/models';
 
 @Component({
   selector: 'app-root',

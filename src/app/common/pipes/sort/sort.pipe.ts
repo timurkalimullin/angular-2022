@@ -1,6 +1,7 @@
 /* eslint-disable class-methods-use-this */
 import { Pipe, PipeTransform } from '@angular/core';
-import { SearchItem, QueryValue } from '../../models';
+import { SearchItem } from '../../../youtube/models';
+import { QueryValue } from '../../../core/models';
 
 @Pipe({
   name: 'sort',
