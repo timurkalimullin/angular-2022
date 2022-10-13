@@ -2,6 +2,7 @@
   <div class="container">
     <app-card
       *ngFor="let item of items | filter:queryValue?.filterValue | sort:queryValue?.selectedOption:queryValue?.sortOrder"
+      routerLink="/{{item.etag}}"
       [card]="item">
     </app-card>
   </div>

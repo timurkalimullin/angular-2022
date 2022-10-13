@@ -26,7 +26,7 @@ header {
       }
 
       &.userinfo-block {
-        padding: $md $md2;
+        padding: 0 $md2;
 
         > span {
           margin-right: $md;
@@ -71,6 +71,7 @@ header {
       align-items: center;
       list-style-type: none;
       padding: 0;
+      margin: 0;
       user-select: none;
 
       &.desc li.selected::after {
