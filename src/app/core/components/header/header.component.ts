@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { Option, QueryValue } from '../../models';
+import { QueryService } from '../../services/query.service';
 
 @Component({
   selector: 'app-header',
@@ -8,8 +9,6 @@ import { Option, QueryValue } from '../../models';
 })
 export class HeaderComponent {
   @Output() query = new EventEmitter<QueryValue>();
-
-  @Output() search = new EventEmitter<string>();
 
   @Input() queryValue!: QueryValue;
 
@@ -21,6 +20,8 @@ export class HeaderComponent {
   ];
 
   searchValue: string = '';
+
+  constructor(private queryService: QueryService) {}
 
   toggleFilter() {
     this.showSort = !this.showSort;
@@ -40,7 +41,7 @@ export class HeaderComponent {
 
   submit() {
     this.resetQueryValue();
-    this.search.emit(this.searchValue);
+    this.queryService.searchChange(this.searchValue);
   }
 
   resetQueryValue() {
