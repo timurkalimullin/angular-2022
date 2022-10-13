@@ -6,6 +6,8 @@ import { CardComponent } from './components/card/card.component';
 import { StatblockComponent } from './components/statblock/statblock.component';
 import { ColorBorderDirective } from './directives/color-border.directive';
 import { NotfoundComponent } from './pages/notfound/notfound.component';
+import { SortPipe } from './pipes/sort/sort.pipe';
+import { FilterPipe } from './pipes/filter/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -17,5 +19,6 @@ import { NotfoundComponent } from './pages/notfound/notfound.component';
   ],
   imports: [CoreModule, YoutubeRoutingModule],
   exports: [SearchComponent],
+  providers: [FilterPipe, SortPipe],
 })
 export class YoutubeModule {}

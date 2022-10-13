@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Option, QueryValue } from '../../models';
 import { QueryService } from '../../services/query.service';
 
@@ -8,18 +8,18 @@ import { QueryService } from '../../services/query.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  @Output() query = new EventEmitter<QueryValue>();
-
-  @Input() queryValue!: QueryValue;
-
-  showSort: boolean = false;
-
   readonly options: Option[] = [
     { label: 'date', value: 'date' },
     { label: 'count of views', value: 'count' },
   ];
 
-  searchValue: string = '';
+  queryValue: QueryValue = {
+    filterValue: '',
+  };
+
+  showSort: boolean = false;
+
+  searchValue?: string = '';
 
   constructor(private queryService: QueryService) {}
 
@@ -28,27 +28,33 @@ export class HeaderComponent {
   }
 
   sortChange(opt: Option['value']) {
-    const sortOrder = this.queryValue.sortOrder === 'asc' ? 'desc' : 'asc';
-    const selectedOption = opt;
+    this.queryValue.sortOrder =
+      this.queryValue.sortOrder === 'asc' ? 'desc' : 'asc';
+    this.queryValue.selectedOption = opt;
 
-    this.query.emit({ selectedOption, sortOrder });
+    this.setCurrentQuery();
   }
 
   filterValueChange(e: Event) {
-    const filterValue = (e.target as HTMLInputElement).value;
-    this.query.emit({ filterValue });
+    this.queryValue.filterValue = (e.target as HTMLInputElement).value;
+    this.setCurrentQuery();
   }
 
   submit() {
-    this.resetQueryValue();
-    this.queryService.searchChange(this.searchValue);
+    this.resetQuery();
+    this.setCurrentQuery();
   }
 
-  resetQueryValue() {
-    this.query.emit({
-      filterValue: '',
-      sortOrder: undefined,
-      selectedOption: undefined,
+  setCurrentQuery() {
+    this.queryService.queryChange({
+      searchValue: this.searchValue,
+      query: this.queryValue,
     });
+  }
+
+  resetQuery() {
+    this.queryValue = {
+      filterValue: '',
+    };
   }
 }

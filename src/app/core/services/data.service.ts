@@ -16,7 +16,9 @@ export class DataService {
     return this.data;
   }
 
-  getItems(v: string) {
+  getItems(v?: string) {
+    if (v === undefined) return undefined;
+
     this.items = data.items.filter(el =>
       el.snippet.title.toLowerCase().includes(v.toLowerCase())
     );

@@ -1,6 +1,6 @@
 /* eslint-disable class-methods-use-this */
 import { Pipe, PipeTransform } from '@angular/core';
-import { SearchItem } from '../../../youtube/models';
+import { SearchItem } from '../../models';
 
 @Pipe({
   name: 'filter',

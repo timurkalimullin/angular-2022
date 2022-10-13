@@ -3,6 +3,8 @@ import { Subscription } from 'rxjs';
 import { QueryService } from 'src/app/core/services/query.service';
 import { DataService } from 'src/app/core/services/data.service';
 import { SearchItem } from '../../models';
+import { FilterPipe } from '../../pipes/filter/filter.pipe';
+import { SortPipe } from '../../pipes/sort/sort.pipe';
 
 @Component({
   selector: 'app-search',
@@ -12,19 +14,32 @@ import { SearchItem } from '../../models';
 export class SearchComponent implements OnDestroy {
   items?: SearchItem[] = [];
 
-  subscription?: Subscription;
+  querySubscription?: Subscription;
 
   constructor(
     private queryService: QueryService,
-    private dataService: DataService
+    private dataService: DataService,
+    private filterPipe: FilterPipe,
+    private sortpipe: SortPipe
   ) {
-    this.subscription = this.queryService.search$.subscribe(val => {
-      const items = this.dataService.getItems(val);
-      this.items = items;
+    this.querySubscription = this.queryService.query$.subscribe(val => {
+      const items = this.dataService.getItems(val.searchValue);
+      if (items) {
+        const filtered = this.filterPipe.transform(
+          items,
+          val.query?.filterValue
+        );
+        const sorted = this.sortpipe.transform(
+          filtered,
+          val.query?.selectedOption,
+          val.query?.sortOrder
+        );
+        this.items = sorted;
+      }
     });
   }
 
   ngOnDestroy(): void {
-    this.subscription?.unsubscribe();
+    this.querySubscription?.unsubscribe();
   }
 }
