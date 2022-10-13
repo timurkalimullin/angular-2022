@@ -15,9 +15,9 @@ export class MainComponent implements OnDestroy, OnInit {
 
   queryValue?: QueryValue;
 
-  querySubscription?: Subscription;
+  private querySubscription?: Subscription;
 
-  searchSubscription?: Subscription;
+  private searchSubscription?: Subscription;
 
   constructor(
     private queryService: QueryService,
