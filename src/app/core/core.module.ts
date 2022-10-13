@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatInputModule } from '@angular/material/input';
@@ -17,6 +18,7 @@ import { HeaderComponent } from './components/header/header.component';
     CommonModule,
     FormsModule,
     BrowserModule,
+    RouterModule,
     MatInputModule,
     MatFormFieldModule,
     MatIconModule,
@@ -28,6 +30,7 @@ import { HeaderComponent } from './components/header/header.component';
     CommonModule,
     FormsModule,
     BrowserModule,
+    RouterModule,
     MatInputModule,
     MatFormFieldModule,
     MatIconModule,

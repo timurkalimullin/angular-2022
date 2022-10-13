@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CoreModule } from '../core/core.module';
+import { YoutubeRoutingModule } from './youtube.routing.module';
 import { SearchComponent } from './pages/search/search.component';
 import { CardComponent } from './components/card/card.component';
 import { StatblockComponent } from './components/statblock/statblock.component';
@@ -14,7 +15,7 @@ import { NotfoundComponent } from './pages/notfound/notfound.component';
     StatblockComponent,
     NotfoundComponent,
   ],
-  imports: [CoreModule],
+  imports: [CoreModule, YoutubeRoutingModule],
   exports: [SearchComponent],
 })
 export class YoutubeModule {}

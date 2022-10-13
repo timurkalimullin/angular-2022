@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { CoreModule } from '../core/core.module';
 import { YoutubeModule } from '../youtube/youtube.module';
 
@@ -9,7 +8,7 @@ import { FilterPipe } from './pipes/filter/filter.pipe';
 
 @NgModule({
   declarations: [MainComponent, FilterPipe, SortPipe],
-  imports: [CommonModule, CoreModule, YoutubeModule],
+  imports: [CoreModule, YoutubeModule],
   exports: [MainComponent, CoreModule],
 })
 export class MainModule {}
