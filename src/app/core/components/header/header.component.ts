@@ -42,8 +42,10 @@ export class HeaderComponent {
     this.queryService.queryChange(this.queryValue);
   }
 
-  submit() {
+  submit(e?: SubmitEvent) {
+    e?.preventDefault();
     this.setQuery(true);
+    this.queryService.queryChange(this.queryValue);
     this.queryService.searchValueChange(this.searchValue);
   }
 

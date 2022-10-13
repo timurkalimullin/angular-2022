@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
-import { MainModule } from './main/main.module';
 
 import { AppComponent } from './app.component';
+import { CoreModule } from './core/core.module';
+import { YoutubeModule } from './youtube/youtube.module';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [MainModule],
+  imports: [CoreModule, YoutubeModule],
   providers: [],
   bootstrap: [AppComponent],
 })

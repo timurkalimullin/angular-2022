@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CoreModule } from '../core/core.module';
 import { YoutubeRoutingModule } from './youtube.routing.module';
-import { SearchComponent } from './pages/search/search.component';
+import { MainComponent } from './pages';
 import { CardComponent } from './components/card/card.component';
 import { StatblockComponent } from './components/statblock/statblock.component';
 import { ColorBorderDirective } from './directives/color-border.directive';
@@ -11,7 +11,7 @@ import { FilterPipe } from './pipes/filter/filter.pipe';
 
 @NgModule({
   declarations: [
-    SearchComponent,
+    MainComponent,
     ColorBorderDirective,
     CardComponent,
     StatblockComponent,
@@ -20,7 +20,7 @@ import { FilterPipe } from './pipes/filter/filter.pipe';
     SortPipe,
   ],
   imports: [CoreModule, YoutubeRoutingModule],
-  exports: [SearchComponent],
+  exports: [MainComponent],
   providers: [],
 })
 export class YoutubeModule {}

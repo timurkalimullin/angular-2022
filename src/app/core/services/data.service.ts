@@ -6,9 +6,9 @@ import { data } from '../../../assets/data';
   providedIn: 'root',
 })
 export class DataService {
-  data?: SearchResponse;
+  private data?: SearchResponse;
 
-  items?: SearchResponse['items'];
+  private items?: SearchResponse['items'];
 
   getData(): SearchResponse {
     this.data = data;
