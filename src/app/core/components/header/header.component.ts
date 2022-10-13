@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Option, QueryValue } from '../../models';
 import { QueryService } from '../../services/query.service';
 
@@ -21,7 +22,7 @@ export class HeaderComponent {
 
   searchValue?: string = '';
 
-  constructor(private queryService: QueryService) {}
+  constructor(private queryService: QueryService, private router: Router) {}
 
   toggleFilter() {
     this.showSort = !this.showSort;
@@ -44,6 +45,7 @@ export class HeaderComponent {
 
   submit(e?: SubmitEvent) {
     e?.preventDefault();
+    this.router.navigate(['/']);
     this.setQuery(true);
     this.queryService.queryChange(this.queryValue);
     this.queryService.searchValueChange(this.searchValue);
