@@ -1,5 +1,5 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
-import { Option, QueryValue } from '../common/models';
+import { Option, QueryValue } from '../../models';
 
 @Component({
   selector: 'app-header',

@@ -1,15 +1,7 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
-import { MatInputModule } from '@angular/material/input';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatCardModule } from '@angular/material/card';
+import { CoreModule } from './core/core.module';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
 import { SearchComponent } from './search/search.component';
 import { StatblockComponent } from './search/statblock/statblock.component';
 import { CardComponent } from './search/card/card.component';
@@ -20,7 +12,6 @@ import { SortPipe } from './common/pipes/sort/sort.pipe';
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
     SearchComponent,
     StatblockComponent,
     CardComponent,
@@ -28,16 +19,7 @@ import { SortPipe } from './common/pipes/sort/sort.pipe';
     FilterPipe,
     SortPipe,
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatButtonModule,
-    MatToolbarModule,
-    MatCardModule,
-  ],
+  imports: [CoreModule],
   providers: [],
   bootstrap: [AppComponent],
 })
