@@ -32,29 +32,30 @@ export class HeaderComponent {
       this.queryValue.sortOrder === 'asc' ? 'desc' : 'asc';
     this.queryValue.selectedOption = opt;
 
-    this.setCurrentQuery();
+    this.setQuery();
+    this.queryService.queryChange(this.queryValue);
   }
 
   filterValueChange(e: Event) {
     this.queryValue.filterValue = (e.target as HTMLInputElement).value;
-    this.setCurrentQuery();
+    this.setQuery();
+    this.queryService.queryChange(this.queryValue);
   }
 
   submit() {
-    this.resetQuery();
-    this.setCurrentQuery();
+    this.setQuery(true);
+    this.queryService.searchValueChange(this.searchValue);
   }
 
-  setCurrentQuery() {
-    this.queryService.queryChange({
-      searchValue: this.searchValue,
-      query: this.queryValue,
-    });
-  }
-
-  resetQuery() {
-    this.queryValue = {
-      filterValue: '',
-    };
+  setQuery(isReset?: boolean) {
+    this.queryValue = !isReset
+      ? {
+          filterValue: this.queryValue.filterValue,
+          selectedOption: this.queryValue.selectedOption,
+          sortOrder: this.queryValue.sortOrder,
+        }
+      : {
+          filterValue: '',
+        };
   }
 }

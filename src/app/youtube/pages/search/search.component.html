@@ -1,5 +1,8 @@
 <section class="search-result">
   <div class="container">
-    <app-card *ngFor="let item of items" [card]="item"></app-card>
+    <app-card
+      *ngFor="let item of items | filter:queryValue?.filterValue | sort:queryValue?.selectedOption:queryValue?.sortOrder"
+      [card]="item">
+    </app-card>
   </div>
 </section>

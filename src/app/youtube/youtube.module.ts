@@ -16,9 +16,11 @@ import { FilterPipe } from './pipes/filter/filter.pipe';
     CardComponent,
     StatblockComponent,
     NotfoundComponent,
+    FilterPipe,
+    SortPipe,
   ],
   imports: [CoreModule, YoutubeRoutingModule],
   exports: [SearchComponent],
-  providers: [FilterPipe, SortPipe],
+  providers: [],
 })
 export class YoutubeModule {}
