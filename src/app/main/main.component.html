@@ -1,0 +1,2 @@
+<app-header [queryValue]="query" (search)="search($event)" (query)="queryChange($event)"></app-header>
+<app-search [items]="items | filter: query.filterValue | sort: query.selectedOption : query.sortOrder"></app-search>

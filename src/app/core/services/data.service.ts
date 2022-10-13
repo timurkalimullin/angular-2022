@@ -5,7 +5,7 @@ import { data } from '../../../assets/data';
 @Injectable({
   providedIn: 'root',
 })
-export class MainService {
+export class DataService {
   data?: SearchResponse;
 
   items?: SearchResponse['items'];

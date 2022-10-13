@@ -1,14 +1,11 @@
 import { NgModule } from '@angular/core';
-import { CoreModule } from './core/core.module';
-import { YoutubeModule } from './youtube/youtube.module';
+import { MainModule } from './main/main.module';
 
 import { AppComponent } from './app.component';
-import { FilterPipe } from './common/pipes/filter/filter.pipe';
-import { SortPipe } from './common/pipes/sort/sort.pipe';
 
 @NgModule({
-  declarations: [AppComponent, FilterPipe, SortPipe],
-  imports: [CoreModule, YoutubeModule],
+  declarations: [AppComponent],
+  imports: [MainModule],
   providers: [],
   bootstrap: [AppComponent],
 })
