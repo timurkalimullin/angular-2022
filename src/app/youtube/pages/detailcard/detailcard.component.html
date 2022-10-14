@@ -2,7 +2,7 @@
   <mat-card class="detail-info">
     <mat-card-title-group>
       <img src="{{card?.snippet?.thumbnails?.high?.url}}" alt="info-image"/>
-      <div class="detail-info-description">
+      <div class="detail-info-description" [appColorBorder]="card?.snippet?.publishedAt">
         <div class="detail-info-description-header">
           <h2>{{card?.snippet?.title}}</h2>
           <span>{{card?.snippet?.publishedAt | date}}</span>
