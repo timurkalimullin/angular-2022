@@ -1,0 +1,18 @@
+<div class="container">
+  <mat-card class="detail-info">
+    <mat-card-title-group>
+      <img src="{{card?.snippet?.thumbnails?.high?.url}}" alt="info-image"/>
+      <div class="detail-info-description">
+        <div class="detail-info-description-header">
+          <h2>{{card?.snippet?.title}}</h2>
+          <span>{{card?.snippet?.publishedAt | date}}</span>
+        </div>
+        <app-statblock [stats]="card?.statistics"></app-statblock>
+        <div style="margin-top: 12px">
+          <h3>Description</h3>
+          <div class="detail-info-description-content">{{card?.snippet?.description}}</div>
+        </div>
+      </div>
+    </mat-card-title-group>
+  </mat-card>
+</div>

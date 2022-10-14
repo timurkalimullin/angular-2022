@@ -20,6 +20,7 @@ export class ColorBorderDirective implements OnInit {
     const now = new Date().getTime();
     const published = new Date(this.appColorBorder ?? '').getTime();
     const difference = now - published;
+    this.el.nativeElement.style.borderBottom = '8px solid transparent';
     this.el.nativeElement.style.borderBottomColor = this.getColor(difference);
   }
 

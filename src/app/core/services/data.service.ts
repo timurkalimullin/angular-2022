@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SearchResponse } from '../../youtube/models/search-response.model';
+import { SearchItem } from '../../youtube/models/search-item.model';
 import { data } from '../../../assets/data';
 
 @Injectable({
@@ -9,6 +10,8 @@ export class DataService {
   private data?: SearchResponse;
 
   private items?: SearchResponse['items'];
+
+  private currentItem?: SearchItem;
 
   getData(): SearchResponse {
     this.data = data;
@@ -24,5 +27,13 @@ export class DataService {
     );
 
     return this.items;
+  }
+
+  getItem(id?: string | null) {
+    const item = data.items.find(el => el.id === id);
+
+    this.currentItem = item;
+
+    return item;
   }
 }
