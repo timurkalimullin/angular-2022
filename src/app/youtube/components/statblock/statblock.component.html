@@ -1,4 +1,6 @@
-<div *ngIf="permitted.includes(name || '')">
-  <img src="/assets/{{name}}.svg" />
-  <span>{{value}}</span>
+<div class="stats">
+  <div *ngFor="let stat of innerStats | keyvalue">
+    <img src="/assets/{{stat.key}}.svg" />
+    <span>{{stat.value}}</span>
+  </div>
 </div>

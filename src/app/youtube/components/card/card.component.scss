@@ -28,12 +28,6 @@
     }
   }
 
-  &-stats {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: $md1;
-  }
-
   .mat-card-actions {
     & > button {
       display: block;

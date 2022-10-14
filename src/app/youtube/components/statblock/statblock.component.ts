@@ -1,14 +1,21 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Statistics } from '../../models';
 
 @Component({
   selector: 'app-statblock',
   templateUrl: './statblock.component.html',
   styleUrls: ['./statblock.component.scss'],
 })
-export class StatblockComponent {
-  @Input() name?: string;
+export class StatblockComponent implements OnInit {
+  @Input() stats?: Statistics;
 
-  @Input() value?: string;
+  innerStats?: Omit<Statistics, 'favoriteCount'>;
 
-  permitted = ['viewCount', 'likeCount', 'dislikeCount', 'commentCount'];
+  ngOnInit() {
+    if (!this.stats) return;
+
+    const { favoriteCount, ...rest } = this.stats;
+
+    this.innerStats = rest;
+  }
 }

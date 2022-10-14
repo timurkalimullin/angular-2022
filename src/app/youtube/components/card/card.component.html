@@ -5,9 +5,7 @@
   <div class="card-image">
     <img src="{{card?.snippet?.thumbnails?.medium?.url}}" alt="card-img">
   </div>
-  <div class="card-stats">
-    <app-statblock *ngFor="let stat of card?.statistics | keyvalue" name="{{stat.key}}" value="{{stat.value}}"></app-statblock>
-  </div>
+  <app-statblock [stats]="card?.statistics"></app-statblock>
   <mat-card-content class="card-description">
     <p>
       {{card?.snippet?.description}}
