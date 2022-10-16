@@ -3,9 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { MainComponent, NotfoundComponent, DetailcardComponent } from './pages';
 
 const routes: Routes = [
+  { path: '404', component: NotfoundComponent, pathMatch: 'full' },
   { path: '', component: MainComponent },
   { path: ':id', component: DetailcardComponent },
-  { path: '**', component: NotfoundComponent },
+  { path: '**', redirectTo: '404' },
 ];
 
 @NgModule({

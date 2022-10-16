@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from 'src/app/core/services/data.service';
 import { SearchItem } from '../../models';
 
@@ -13,12 +13,17 @@ export class DetailcardComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private dataService: DataService
+    private dataService: DataService,
+    private router: Router
   ) {}
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     const currentCard = this.dataService.getItem(id);
+    if (!currentCard) {
+      this.router.navigate(['404']);
+      return;
+    }
     this.card = currentCard;
   }
 }
