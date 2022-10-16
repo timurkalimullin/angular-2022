@@ -42,7 +42,12 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.loginService.userName$.subscribe(n => {
       const userInfo = this.loginService.getUserInfo();
-      this.userName = n ?? userInfo.userName;
+      const currentUser = n ?? userInfo.userName;
+      this.userName = currentUser;
+      if (!currentUser) {
+        this.searchValue = '';
+        this.queryService.searchValueChange(this.searchValue);
+      }
     });
   }
 
