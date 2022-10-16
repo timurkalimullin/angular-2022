@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
@@ -17,7 +16,6 @@ import { HeaderComponent } from './components/header/header.component';
   imports: [
     CommonModule,
     FormsModule,
-    BrowserModule,
     RouterModule,
     MatInputModule,
     MatFormFieldModule,
@@ -29,7 +27,6 @@ import { HeaderComponent } from './components/header/header.component';
   exports: [
     CommonModule,
     FormsModule,
-    BrowserModule,
     RouterModule,
     MatInputModule,
     MatFormFieldModule,

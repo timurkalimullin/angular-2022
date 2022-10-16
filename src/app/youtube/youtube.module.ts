@@ -20,7 +20,6 @@ import { FilterPipe } from './pipes/filter/filter.pipe';
     DetailcardComponent,
   ],
   imports: [CoreModule, YoutubeRoutingModule],
-  exports: [MainComponent],
   providers: [],
 })
 export class YoutubeModule {}

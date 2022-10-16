@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Option, QueryValue } from '../../models';
+import { LoginService } from '../../services/login.service';
 import { QueryService } from '../../services/query.service';
 
 @Component({
@@ -8,7 +9,7 @@ import { QueryService } from '../../services/query.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
   readonly options: Option[] = [
     { label: 'date', value: 'date' },
     { label: 'count of views', value: 'count' },
@@ -22,10 +23,23 @@ export class HeaderComponent {
 
   searchValue?: string = '';
 
-  constructor(private queryService: QueryService, private router: Router) {}
+  userName: string | null = null;
+
+  constructor(
+    private queryService: QueryService,
+    private router: Router,
+    private loginService: LoginService
+  ) {}
 
   toggleFilter() {
     this.showSort = !this.showSort;
+  }
+
+  ngOnInit(): void {
+    const userInfo = this.loginService.getUserInfo();
+    this.loginService.userName$.subscribe(n => {
+      this.userName = n ?? userInfo.userName;
+    });
   }
 
   sortChange(opt: Option['value']) {
