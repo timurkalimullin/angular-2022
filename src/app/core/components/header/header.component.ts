@@ -35,9 +35,13 @@ export class HeaderComponent implements OnInit {
     this.showSort = !this.showSort;
   }
 
+  logOut() {
+    this.loginService.logOut();
+  }
+
   ngOnInit(): void {
-    const userInfo = this.loginService.getUserInfo();
     this.loginService.userName$.subscribe(n => {
+      const userInfo = this.loginService.getUserInfo();
       this.userName = n ?? userInfo.userName;
     });
   }

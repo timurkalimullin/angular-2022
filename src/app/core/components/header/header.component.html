@@ -7,13 +7,14 @@
       </div>
       <div class="toolbar-block button-block">
         <button type="submit" class="button" mat-raised-button color="primary">Submit</button>
-        <button type="button" (click)="toggleFilter()" class="button filter-button square" mat-raised-button color="primary">
+        <button *ngIf="userName" type="button" (click)="toggleFilter()" class="button filter-button square" mat-raised-button color="primary">
           <img src="/assets/settings.svg" />
         </button>
       </div>
       <div class="toolbar-block userinfo-block">
-        <span>{{userName}}</span>
-        <img src="/assets/login.svg" />
+          <span>{{userName}}</span>
+          <img *ngIf="userName" src="/assets/login.svg" />
+        <button *ngIf="userName" class="button" (click)="logOut()" mat-raised-button color="secondary">Log out</button>
       </div>
     </div>
   </form>

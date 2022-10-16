@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { LoginService } from '../core/services/login.service';
+import { Router } from '@angular/router';
+import { LoginService } from '../../core/services/login.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import { LoginService } from '../core/services/login.service';
 export class LoginComponent {
   login: string = '';
 
-  constructor(private loginService: LoginService) {}
+  constructor(private loginService: LoginService, private router: Router) {}
 
   submit(e: SubmitEvent) {
     e.preventDefault();

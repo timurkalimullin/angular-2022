@@ -1,0 +1,13 @@
+.login-wrapper {
+  margin: 0 auto;
+  margin-top: 16px;
+  width: 300px;
+
+  & > h2 {
+    color: #6a6968;
+  }
+
+  & > button {
+    margin-left: 12px;
+  }
+}

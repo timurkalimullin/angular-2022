@@ -1,7 +1,8 @@
 <div class="container">
   <form (submit)="submit($event)">
     <div class="login-wrapper">
-      <input class="login-input" matInput type="text" [value]="login" (input)="login = $any($event.target).value" name="login">
+      <h2>Please log in</h2>
+      <input class="login-input" matInput type="text" [(ngModel)]="login" name="login">
       <button type="submit" class="button" mat-raised-button color="primary">Log in</button>
     </div>
   </form>
