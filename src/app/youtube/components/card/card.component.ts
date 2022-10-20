@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { SearchItem } from '../../models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-card',
@@ -7,5 +7,12 @@ import { SearchItem } from '../../models';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent {
-  @Input() card?: SearchItem;
+  @Input() card?: any;
+
+  constructor(private router: Router) {}
+
+  go() {
+    console.log('aaa');
+    this.router.navigate([this.card?.id]);
+  }
 }
