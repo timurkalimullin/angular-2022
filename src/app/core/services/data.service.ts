@@ -2,8 +2,7 @@
 import { Injectable } from '@angular/core';
 import { map, mergeMap, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { BASE_URL, MAX_RESULTS } from 'src/app/shared/constants';
-import { env } from 'src/env';
+import { MAX_RESULTS } from 'src/app/shared/constants';
 import { VideoResponse, SearchResponse } from 'src/app/youtube/models';
 
 @Injectable({
@@ -17,7 +16,7 @@ export class DataService {
 
     return this.client
       .get<SearchResponse>(
-        `${BASE_URL}/search?key=${env.API_KEY}&type=video&part=snippet&maxResults=${MAX_RESULTS}&q=${v}`
+        `search?key=<API_KEY>&type=video&part=snippet&maxResults=${MAX_RESULTS}&q=${v}`
       )
       .pipe(
         mergeMap(res => {
@@ -28,19 +27,17 @@ export class DataService {
 
           return this.client
             .get<VideoResponse>(
-              `${BASE_URL}/videos?key=${env.API_KEY}&id=${idsString}&part=snippet,statistics`
+              `videos?key=<API_KEY>&id=${idsString}&part=snippet,statistics`
             )
             .pipe(map(r => r.items));
         })
       );
-
-    // return of(this.items);
   }
 
   getItem(id?: string | null) {
     return this.client
       .get<VideoResponse>(
-        `${BASE_URL}/videos?key=${env.API_KEY}&id=${id}&part=snippet,statistics`
+        `videos?key=<API_KEY>&id=${id}&part=snippet,statistics`
       )
       .pipe(
         map(el => {

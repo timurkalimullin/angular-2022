@@ -19,6 +19,8 @@ export class MainComponent implements OnDestroy, OnInit {
 
   private searchSubscription?: Subscription;
 
+  private fetchItemsSubs?: Subscription;
+
   constructor(
     private queryService: QueryService,
     private dataService: DataService
@@ -29,14 +31,17 @@ export class MainComponent implements OnDestroy, OnInit {
       this.queryValue = val;
     });
     this.searchSubscription = this.queryService.search$.subscribe(val => {
-      this.dataService.getItems(val)?.subscribe((i: any) => {
-        this.items = i;
-      });
+      this.fetchItemsSubs = this.dataService
+        .getItems(val)
+        ?.subscribe((i: any) => {
+          this.items = i;
+        });
     });
   }
 
   ngOnDestroy(): void {
     this.querySubscription?.unsubscribe();
     this.searchSubscription?.unsubscribe();
+    this.fetchItemsSubs?.unsubscribe();
   }
 }

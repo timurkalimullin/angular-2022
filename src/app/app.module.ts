@@ -7,10 +7,12 @@ import { CoreModule } from './core/core.module';
 import { AppRoutingmodule } from './app.routing.module';
 import { LoginModule } from './auth/login.module';
 
+import { httpInterceptorProviders } from './core/interceptors';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [CoreModule, AppRoutingmodule, BrowserModule, LoginModule],
-  providers: [],
+  providers: [httpInterceptorProviders],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

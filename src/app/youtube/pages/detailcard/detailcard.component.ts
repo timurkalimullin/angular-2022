@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { DataService } from 'src/app/core/services/data.service';
 import { VideoItem } from '../../models';
 
@@ -8,8 +9,10 @@ import { VideoItem } from '../../models';
   templateUrl: './detailcard.component.html',
   styleUrls: ['./detailcard.component.scss'],
 })
-export class DetailcardComponent implements OnInit {
+export class DetailcardComponent implements OnInit, OnDestroy {
   card?: VideoItem;
+
+  private fetchitemsSubs?: Subscription;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,5 +29,9 @@ export class DetailcardComponent implements OnInit {
       }
       this.card = res;
     });
+  }
+
+  ngOnDestroy() {
+    this.fetchitemsSubs?.unsubscribe();
   }
 }
