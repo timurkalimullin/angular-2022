@@ -1,23 +1,20 @@
 <header>
-  <form (submit)="submit($event)">
-    <div class="toolbar container">
-      <div class="toolbar-block logo-block">
-        <h1 class="logo"><img src="/assets/logo.svg" alt="logo" /></h1>
-        <input class="search-input" matInput type="text" [(ngModel)]="searchValue" name="search">
-      </div>
-      <div class="toolbar-block button-block">
-        <button type="submit" class="button" mat-raised-button color="primary">Submit</button>
-        <button *ngIf="userName" type="button" (click)="toggleFilter()" class="button filter-button square" mat-raised-button color="primary">
-          <img src="/assets/settings.svg" />
-        </button>
-      </div>
-      <div class="toolbar-block userinfo-block">
-          <span>{{userName}}</span>
-          <img *ngIf="userName" src="/assets/login.svg" />
-        <button *ngIf="userName" class="button" (click)="logOut()" mat-raised-button color="secondary">Log out</button>
-      </div>
+  <div class="toolbar container">
+    <div class="toolbar-block logo-block">
+      <h1 class="logo"><img src="/assets/logo.svg" alt="logo" /></h1>
+      <input class="search-input" matInput type="text" [formControl]="searchValue">
     </div>
-  </form>
+    <div class="toolbar-block button-block">
+      <button *ngIf="userName" type="button" (click)="toggleFilter()" class="button filter-button square" mat-raised-button color="primary">
+        <img src="/assets/settings.svg" />
+      </button>
+    </div>
+    <div class="toolbar-block userinfo-block">
+        <span>{{userName}}</span>
+        <img *ngIf="userName" src="/assets/login.svg" />
+      <button *ngIf="userName" class="button" (click)="logOut()" mat-raised-button color="secondary">Log out</button>
+    </div>
+  </div>
   <div *ngIf="showSort" class="sort toolbar container">
     <span>Sort by: </span>
     <ul class="sort-options" [ngClass]="queryValue.sortOrder === 'asc' ? 'asc' : 'desc'">

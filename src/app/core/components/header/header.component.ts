@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { debounceTime, filter } from 'rxjs';
+import { DEBOUNCE_VAL, MIN_SEARCH_LENGTH } from 'src/app/shared/constants';
 import { Option, QueryValue } from '../../models';
 import { LoginService } from '../../services/login.service';
 import { QueryService } from '../../services/query.service';
@@ -21,7 +24,7 @@ export class HeaderComponent implements OnInit {
 
   showSort: boolean = false;
 
-  searchValue?: string = '';
+  searchValue = new FormControl();
 
   userName: string | null = null;
 
@@ -45,10 +48,20 @@ export class HeaderComponent implements OnInit {
       const currentUser = n ?? userInfo.userName;
       this.userName = currentUser;
       if (!currentUser) {
-        this.searchValue = '';
-        this.queryService.searchValueChange(this.searchValue);
+        this.searchValue.setValue('');
+        this.queryService.searchValueChange(this.searchValue.value);
       }
     });
+
+    this.searchValue.valueChanges
+      .pipe(
+        filter(v => v?.length >= MIN_SEARCH_LENGTH),
+        debounceTime(DEBOUNCE_VAL)
+      )
+      .subscribe(val => {
+        this.router.navigate(['/']);
+        this.queryService.searchValueChange(val);
+      });
   }
 
   sortChange(opt: Option['value']) {
@@ -64,14 +77,6 @@ export class HeaderComponent implements OnInit {
     this.queryValue.filterValue = (e.target as HTMLInputElement).value;
     this.setQuery();
     this.queryService.queryChange(this.queryValue);
-  }
-
-  submit(e?: SubmitEvent) {
-    e?.preventDefault();
-    this.router.navigate(['/']);
-    this.setQuery(true);
-    this.queryService.queryChange(this.queryValue);
-    this.queryService.searchValueChange(this.searchValue);
   }
 
   setQuery(isReset?: boolean) {
