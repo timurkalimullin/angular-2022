@@ -19,7 +19,7 @@ export class DataInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    const url = `${BASE_URL}/${req.url}`.replace('<API_KEY>', env.API_KEY);
+    const url = `${BASE_URL}/${req.url}&key=${env.API_KEY}`;
     const cloned = req.clone({
       url,
     });

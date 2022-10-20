@@ -16,7 +16,7 @@ export class DataService {
 
     return this.client
       .get<SearchResponse>(
-        `search?key=<API_KEY>&type=video&part=snippet&maxResults=${MAX_RESULTS}&q=${v}`
+        `search?&type=video&part=snippet&maxResults=${MAX_RESULTS}&q=${v}`
       )
       .pipe(
         mergeMap(res => {
@@ -27,7 +27,7 @@ export class DataService {
 
           return this.client
             .get<VideoResponse>(
-              `videos?key=<API_KEY>&id=${idsString}&part=snippet,statistics`
+              `videos?&id=${idsString}&part=snippet,statistics`
             )
             .pipe(map(r => r.items));
         })
@@ -36,9 +36,7 @@ export class DataService {
 
   getItem(id?: string | null) {
     return this.client
-      .get<VideoResponse>(
-        `videos?key=<API_KEY>&id=${id}&part=snippet,statistics`
-      )
+      .get<VideoResponse>(`videos?id=${id}&part=snippet,statistics`)
       .pipe(
         map(el => {
           return el?.items?.[0];
