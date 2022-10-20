@@ -1,7 +1,9 @@
 export interface SearchItem {
   kind: string;
   etag: string;
-  id: string;
+  id: {
+    videoId: string;
+  };
   snippet: Snippet;
   statistics: Statistics;
 }

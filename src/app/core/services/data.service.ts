@@ -1,18 +1,23 @@
+/* eslint-disable max-len */
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { of, map, mergeMap } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { BASE_URL, MAX_RESULTS } from 'src/app/shared/constants';
+import { env } from 'src/env';
 import { SearchResponse } from '../../youtube/models/search-response.model';
-import { SearchItem } from '../../youtube/models/search-item.model';
 import { data } from '../../../assets/data';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
-  private data?: SearchResponse;
+  private data?: any;
 
-  private items?: SearchResponse['items'];
+  private items?: any;
 
-  private currentItem?: SearchItem;
+  private currentItem?: any;
+
+  constructor(private client: HttpClient) {}
 
   getData(): SearchResponse {
     this.data = data;
@@ -27,7 +32,25 @@ export class DataService {
       el.snippet.title.toLowerCase().includes(v.toLowerCase())
     );
 
-    return of(this.items);
+    return this.client
+      .get<SearchResponse>(
+        `${BASE_URL}/search?key=${env.API_KEY}&type=video&part=snippet&maxResults=${MAX_RESULTS}&q=${v}`
+      )
+      .pipe(
+        mergeMap(res => {
+          const ids = res.items.reduce((acc, el) => {
+            return [...acc, el.id.videoId];
+          }, [] as string[]);
+          const idsString = ids.join(',');
+          return this.client
+            .get<any>(
+              `${BASE_URL}/videos?key=${env.API_KEY}&id=${idsString}&part=snippet,statistics`
+            )
+            .pipe(map(r => r.items));
+        })
+      );
+
+    // return of(this.items);
   }
 
   getItem(id?: string | null) {
