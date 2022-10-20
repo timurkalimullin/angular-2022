@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Statistics } from '../../models';
+import { VideoItem } from '../../models';
 
 @Component({
   selector: 'app-statblock',
@@ -7,9 +7,9 @@ import { Statistics } from '../../models';
   styleUrls: ['./statblock.component.scss'],
 })
 export class StatblockComponent implements OnInit {
-  @Input() stats?: Statistics;
+  @Input() stats?: VideoItem['statistics'];
 
-  innerStats?: Omit<Statistics, 'favoriteCount'>;
+  innerStats?: Omit<any, 'favoriteCount'>;
 
   ngOnInit() {
     if (!this.stats) return;

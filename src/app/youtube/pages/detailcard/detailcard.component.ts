@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from 'src/app/core/services/data.service';
+import { VideoItem } from '../../models';
 
 @Component({
   selector: 'app-detailcard',
@@ -8,7 +9,7 @@ import { DataService } from 'src/app/core/services/data.service';
   styleUrls: ['./detailcard.component.scss'],
 })
 export class DetailcardComponent implements OnInit {
-  card?: any;
+  card?: VideoItem;
 
   constructor(
     private route: ActivatedRoute,

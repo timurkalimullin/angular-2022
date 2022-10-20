@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { VideoItem } from '../../models';
 
 @Component({
   selector: 'app-card',
@@ -7,12 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent {
-  @Input() card?: any;
+  @Input() card?: VideoItem;
 
   constructor(private router: Router) {}
 
   go() {
-    console.log('aaa');
     this.router.navigate([this.card?.id]);
   }
 }

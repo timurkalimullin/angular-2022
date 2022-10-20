@@ -1,14 +1,14 @@
 /* eslint-disable class-methods-use-this */
 import { Pipe, PipeTransform } from '@angular/core';
-import { SearchItem } from '../../models';
 import { QueryValue } from '../../../core/models';
+import { VideoItem } from '../../models';
 
 @Pipe({
   name: 'sort',
 })
 export class SortPipe implements PipeTransform {
   transform(
-    value?: SearchItem[],
+    value?: VideoItem[],
     sortParam?: QueryValue['selectedOption'],
     sortOrder?: QueryValue['sortOrder']
   ) {

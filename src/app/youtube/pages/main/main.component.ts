@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs';
 import { QueryService } from 'src/app/core/services/query.service';
 import { DataService } from 'src/app/core/services/data.service';
 import { QueryValue } from 'src/app/core/models';
-import { SearchItem } from '../../models';
+import { VideoItem } from '../../models';
 
 @Component({
   selector: 'app-mainpage',
@@ -11,7 +11,7 @@ import { SearchItem } from '../../models';
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent implements OnDestroy, OnInit {
-  items?: SearchItem[] = [];
+  items?: VideoItem[] = [];
 
   queryValue?: QueryValue;
 
