@@ -29,7 +29,9 @@ export class MainComponent implements OnDestroy, OnInit {
       this.queryValue = val;
     });
     this.searchSubscription = this.queryService.search$.subscribe(val => {
-      this.items = this.dataService.getItems(val);
+      this.dataService.getItems(val)?.subscribe(i => {
+        this.items = i;
+      });
     });
   }
 

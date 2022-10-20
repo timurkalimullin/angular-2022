@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { of } from 'rxjs';
 import { SearchResponse } from '../../youtube/models/search-response.model';
 import { SearchItem } from '../../youtube/models/search-item.model';
 import { data } from '../../../assets/data';
@@ -26,7 +27,7 @@ export class DataService {
       el.snippet.title.toLowerCase().includes(v.toLowerCase())
     );
 
-    return this.items;
+    return of(this.items);
   }
 
   getItem(id?: string | null) {
@@ -34,6 +35,6 @@ export class DataService {
 
     this.currentItem = item;
 
-    return item;
+    return of(item);
   }
 }

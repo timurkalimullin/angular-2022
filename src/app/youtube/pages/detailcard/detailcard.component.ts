@@ -19,11 +19,12 @@ export class DetailcardComponent implements OnInit {
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
-    const currentCard = this.dataService.getItem(id);
-    if (!currentCard) {
-      this.router.navigate(['404']);
-      return;
-    }
-    this.card = currentCard;
+    this.dataService.getItem(id).subscribe(res => {
+      if (!res) {
+        this.router.navigate(['404']);
+        return;
+      }
+      this.card = res;
+    });
   }
 }
