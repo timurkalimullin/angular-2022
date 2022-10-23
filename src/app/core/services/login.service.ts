@@ -16,6 +16,7 @@ export class LoginService {
   constructor(private router: Router) {}
 
   logIn(name: string) {
+    console.log({ name });
     const userToken = window.crypto.randomUUID();
     this.userToken = userToken;
     localStorage.setItem('userToken', userToken);
