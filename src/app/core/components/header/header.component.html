@@ -2,8 +2,8 @@
   <div class="toolbar container">
     <div class="toolbar-block logo-block">
       <h1 class="logo"><img src="/assets/logo.svg" alt="logo" /></h1>
-      <h2 *ngIf="!userName" style="margin: 0">YouTube App</h2>
-      <input *ngIf="userName" class="search-input" matInput type="text" [formControl]="searchValue">
+      <h2 *ngIf="!userName">YouTube App</h2>
+      <input *ngIf="userName" class="search-input" type="text" [formControl]="searchValue">
     </div>
     <div class="toolbar-block button-block">
       <button *ngIf="userName" type="button" (click)="toggleFilter()" class="button filter-button square" mat-raised-button color="primary">
